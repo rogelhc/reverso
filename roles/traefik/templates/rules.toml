@@ -1,0 +1,420 @@
+[backends]
+  [backends.graylog]
+    [backends.graylog.servers.server0]
+      url = "http://graylog.elotech.localnet:9000"
+  [backends.demo145]
+    [backends.demo145.servers.server0]
+      url = "http://192.168.0.145:8888" 
+  [backends.elwoeboxy]
+    [backends.eloweboxy.servers.server0]
+      url = "http://192.168.1.193:8090"
+  [backends.elowww]
+    [backends.elowww.servers.server0]
+      url = "https://EloInternoApps-1251350882.us-east-1.elb.amazonaws.com"
+  [backends.zabbix]
+    [backends.zabbix.servers.server0]
+      url = "http://192.168.1.9"
+  [backends.elowebjroxy]
+    [backends.elowebjroxy.servers.server0]
+      url = "http://192.168.0.106:8089"
+ [backends.elowebjr]
+    [backends.elowebjr.servers.server0]
+      url = "http://192.168.0.106"
+  [backends.eloweb]
+    [backends.eloweb.servers.server0]
+      url = "http://192.168.1.193"
+  [backends.arw]
+    [backends.arw.servers.server0]
+      url = "http://192.168.1.58:8072"
+  [backends.monitoramento]
+    [backends.monitoramento.servers.server0]
+      url = "http://192.168.0.21:3000"
+  [backends.imbau]
+    [backends.imbau.servers.server0]
+      url = "http://172.16.140.2"
+  [backends.conresol]
+    [backends.conresol.servers.server0]
+      url = "http://10.0.9.2"
+  [backends.portalpmm]
+   [backends.portalpmm.servers.server0]
+      url = "http://192.168.0.139:8080"
+  [backends.elochat]
+    [backends.elochat.servers.server0]
+      url = "http://192.168.0.55:8065"
+  [backends.geo]
+    [backends.geo.servers.server0]
+      url = "http://192.168.0.35"
+  [backends.jira]
+    [backends.jira.servers.server0]
+      url = "https://192.168.1.174:8443"
+  [backends.qualidade]
+    [backends.qualidade.servers.server0]
+      url = "http://qualidade.elotech.localnet"
+  [backends.nexus]
+    [backends.nexus.servers.server0]
+      url = "http://192.168.0.126"
+  [backends.hub]
+    [backends.hub.servers.server0]
+      url = "http://192.168.0.126:8090"
+  [backends.sonar]
+    [backends.sonar.servers.server0]
+      url = "http://redmine.elotech.localnet:9000"
+  [backends.demo]
+    [backends.demo.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente1]
+    [backends.cliente1.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente2]
+    [backends.cliente2.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente3]
+    [backends.cliente3.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente4]
+    [backends.cliente4.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente5]
+    [backends.cliente5.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente6]
+    [backends.cliente6.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.cliente7]
+    [backends.cliente7.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.clienteqa]
+    [backends.clienteqa.servers.server0]
+      url = "http://192.168.0.133"
+  [backends.wiki]
+    [backends.wiki.servers.server0]
+      url = "http://192.168.0.172"
+  [backends.rds]
+    [backends.rds.servers.server0]
+      url = "https://192.168.0.136"
+  [backends.jenkins]
+    [backends.jenkins.servers.server0]
+      url = "http://192.168.0.142"
+  [backends.reserva]
+    [backends.reserva.servers.server0]
+      url = "http://192.168.1.244:8080"
+
+[frontends]
+  [frontends.qualidade]
+    entryPoints = ["http", "https"]
+    backend = "qualidade"
+    passHostHeader = true
+    [frontends.qualidade.headers]
+    SSLRedirect = true
+    [frontends.qualidade.routes]
+      [frontends.qualidade.routes.route0]
+        rule = "Host:qualidade.elotech.com.br, redmine.elotech.com.br, qrcode.elotech.com.br, mkt.elotech.com.br"
+  [frontends.imbau]
+    entryPoints = ["http", "https"]
+    backend = "imbau"
+    passHostHeader = true
+    [frontends.imbau.headers]
+    SSLRedirect = true
+    [frontends.imbau.routes]
+      [frontends.imbau.routes.route0]
+        rule = "Host:imbau.elotech.com.br"
+  [frontends.conresol]
+    entryPoints = ["http", "https"]
+    backend = "conresol"
+    passHostHeader = true
+    [frontends.conresol.headers]
+    SSLRedirect = true
+    [frontends.conresol.routes]
+      [frontends.conresol.routes.route0]
+        rule = "Host:conresol.elotech.com.br"
+  [frontends.portalpmm]
+    entryPoints = ["http", "https"]
+    backend = "portalpmm"
+    passHostHeader = true
+    [frontends.portalpmm.headers]
+    SSLRedirect = true
+    [frontends.portalpmm.routes]
+      [frontends.portalpmm.routes.route0]
+        rule = "Host:maringa.elotech.com.br"
+  [frontends.reserva]
+    entryPoints = ["http", "https"]
+    backend = "reserva"
+    passHostHeader = true
+    [frontends.reserva.routes]
+      [frontends.reserva.routes.route0]
+        rule = "Host:reserva.elotech.com.br;AddPrefix:/reserva"
+
+  [frontends.geo]
+    entryPoints = ["http"]
+    backend = "geo"
+    passHostHeader = true
+    [frontends.geo.routes]
+      [frontends.geo.routes.route0]
+        rule = "HostRegexp:{subdomain:[a-z]+}.geo.tributech.com.br"
+
+  [frontends.zabbix]
+    entryPoints = ["http", "https"]
+    backend = "zabbix"
+    passHostHeader = true
+    [frontends.zabbix.headers]
+    SSLRedirect = true
+    [frontends.zabbix.routes]
+      [frontends.zabbix.routes.route0]
+        rule = "Host:zabbix.elotech.com.br"
+ 
+  [frontends.sonar]
+    entryPoints = ["http", "https"]
+    backend = "sonar"
+    passHostHeader = true
+    [frontends.sonar.headers]
+    SSLRedirect = true
+    [frontends.sonar.routes]
+      [frontends.sonar.routes.route0]
+        rule = "Host:sonar.elotech.com.br"
+
+  [frontends.elochat]
+    entryPoints = ["http", "https"]
+    backend = "elochat"
+    passHostHeader = true
+    [frontends.elochat.headers]
+    SSLRedirect = true
+    [frontends.elochat.routes]
+      [frontends.elochat.routes.route0]
+        rule = "Host:elochat.elotech.com.br"
+  [frontends.jira]
+    entryPoints = ["http", "https"]
+    backend = "jira"
+    passHostHeader = true
+    [frontends.jira.headers]
+    SSLRedirect = true
+    [frontends.jira.routes]
+      [frontends.jira.routes.route0]
+        rule = "Host:jira.elotech.com.br"
+ [frontends.demo145]
+    entryPoints = ["http", "https"]
+    backend = "demo145"
+    passHostHeader = true
+    [frontends.demo145.headers]
+    SSLRedirect = true
+    [frontends.demo145.routes]
+      [frontends.demo145.routes.route0]
+        rule = "Host:demo-145.hml.elotech.com.br"
+
+  [frontends.hub]
+    entryPoints = ["http", "https"]
+    backend = "hub"
+    passHostHeader = true
+    [frontends.hub.headers]
+    SSLRedirect = true
+    [frontends.hub.routes]
+      [frontends.hub.routes.route0]
+        rule = "Host:hub.elotech.com.br"
+
+  [frontends.nexus]
+    entryPoints = ["http", "https"]
+    backend = "nexus"
+    passHostHeader = true
+    [frontends.nexus.routes]
+      [frontends.nexus.routes.route0]
+        rule = "Host:nexus.elotech.com.br"
+
+  [frontends.elowebjroxy]
+    entryPoints = ["http","https"]
+    backend = "elowebjroxy"
+    passHostHeader = true
+      [frontends.elowebjroxy.headers]
+      SSLRedirect = true
+    [frontends.elowebjroxy.routes]
+      [frontends.elowebjroxy.routes.route0]
+        rule = "Host:demo.eloweb2.elotech.com.br"
+
+ [frontends.elowebjr]
+    entryPoints = ["http","https"]
+    backend = "elowebjr"
+    passHostHeader = true
+      [frontends.elowebjr.headers]
+      SSLRedirect = true
+    [frontends.elowebjr.routes]
+      [frontends.elowebjr.routes.route0]
+        rule = "Host:eloweb2.elotech.com.br"
+
+  [frontends.eloweboxy]
+    entryPoints = ["http","https"]
+    backend = "eloweboxy"
+    passHostHeader = true
+      [frontends.eloweboxy.headers]
+      SSLRedirect = true
+    [frontends.eloweboxy.routes]
+      [frontends.eloweboxy.routes.route0]
+        rule = "Host:demo.eloweb.elotech.com.br"
+
+
+
+  [frontends.eloweb]
+    entryPoints = ["http","https"]
+    backend = "eloweb"
+    passHostHeader = true
+      [frontends.eloweb.headers]
+      SSLRedirect = true
+    [frontends.eloweb.routes]
+      [frontends.eloweb.routes.route0]
+        rule = "Host:eloweb.elotech.com.br"
+  
+  [frontends.arw]
+    entryPoints = ["http","https"]
+    backend = "arw"
+    passHostHeader = true
+      [frontends.arw.headers]
+      SSLRedirect = true
+    [frontends.arw.routes]
+      [frontends.arw.routes.route0]
+        rule = "Host:arw.eloweb.elotech.com.br"
+
+  [frontends.monitoramento]
+    entryPoints = ["http","https"]
+    backend = "monitoramento"
+    passHostHeader = true
+      [frontends.monitoramento.headers]
+      SSLRedirect = true
+    [frontends.monitoramento.routes]
+      [frontends.monitoramento.routes.route0]
+        rule = "Host:monitoramento.eloweb.elotech.com.br"
+
+  [frontends.demo]
+    entryPoints = ["http","https"]
+    backend = "demo"
+    passHostHeader = true
+      [frontends.demo.headers]
+      SSLRedirect = true
+    [frontends.demo.routes]
+      [frontends.demo.routes.route0]
+        rule = "Host:demo.elotech.com.br"
+
+  [frontends.cliente1]
+    entryPoints = ["http","https"]
+    backend = "cliente1"
+    passHostHeader = true
+      [frontends.cliente1.headers]
+      SSLRedirect = true
+    [frontends.cliente1.routes]
+      [frontends.cliente1.routes.route0]
+        rule = "Host:cliente1.elotech.com.br"
+
+  [frontends.cliente2]
+    entryPoints = ["http","https"]
+    backend = "cliente2"
+    passHostHeader = true
+      [frontends.cliente2.headers]
+      SSLRedirect = true
+    [frontends.cliente2.routes]
+      [frontends.cliente2.routes.route0]
+        rule = "Host:cliente2.elotech.com.br"
+
+  [frontends.cliente3]
+    entryPoints = ["http","https"]
+    backend = "cliente3"
+    passHostHeader = true
+      [frontends.cliente3.headers]
+      SSLRedirect = true
+    [frontends.cliente3.routes]
+      [frontends.cliente3.routes.route0]
+        rule = "Host:cliente3.elotech.com.br"
+
+  [frontends.cliente4]
+    entryPoints = ["http","https"]
+    backend = "cliente4"
+    passHostHeader = true
+      [frontends.cliente4.headers]
+      SSLRedirect = true
+    [frontends.cliente4.routes]
+      [frontends.cliente4.routes.route0]
+        rule = "Host:cliente4.elotech.com.br"
+
+  [frontends.cliente5]
+    entryPoints = ["http","https"]
+    backend = "cliente5"
+    passHostHeader = true
+      [frontends.cliente5.headers]
+      SSLRedirect = true
+    [frontends.cliente5.routes]
+      [frontends.cliente5.routes.route0]
+        rule = "Host:cliente5.elotech.com.br"
+
+  [frontends.cliente6]
+    entryPoints = ["http","https"]
+    backend = "cliente6"
+    passHostHeader = true
+      [frontends.cliente6.headers]
+      SSLRedirect = true
+    [frontends.cliente6.routes]
+      [frontends.cliente6.routes.route0]
+        rule = "Host:cliente6.elotech.com.br"
+
+  [frontends.cliente7]
+    entryPoints = ["http","https"]
+    backend = "cliente7"
+    passHostHeader = true
+      [frontends.cliente7.headers]
+      SSLRedirect = true
+    [frontends.cliente7.routes]
+      [frontends.cliente7.routes.route0]
+        rule = "Host:cliente7.elotech.com.br"
+ 
+ [frontends.clienteqa]
+    entryPoints = ["http","https"]
+    backend = "clienteqa"
+    passHostHeader = true
+      [frontends.clienteqa.headers]
+      SSLRedirect = true
+    [frontends.clienteqa.routes]
+      [frontends.clienteqa.routes.route0]
+        rule = "Host:clienteqa.elotech.com.br"
+
+ [frontends.wiki]
+    entryPoints = ["http", "https"]
+    backend = "wiki"
+    passHostHeader = true
+      [frontends.wiki.headers]
+      SSLRedirect = true
+    [frontends.wiki.routes]
+      [frontends.wiki.routes.route0]
+        rule = "Host:wiki.elotech.com.br"
+  
+  [frontends.rds]
+    entryPoints = ["http", "https"]
+    backend = "rds"
+    passHostHeader = true
+      [frontends.rds.headers]
+      SSLRedirect = true
+    [frontends.rds.routes]
+      [frontends.rds.routes.route0]
+        rule = "Host:rds.elotech.com.br"
+ [frontends.elowww]
+    entryPoints = ["http", "https"]
+    backend = "elowww"
+    passHostHeader = true
+      [frontends.elowww.headers]
+      SSLRedirect = true
+    [frontends.elowww.routes]
+      [frontends.elowww.routes.route0]
+        rule = "Host:elotech.com.br, prismacidadeinteligente.com.br,aldrix.com.br"
+ 
+  [frontends.jenkins]
+    entryPoints = ["http", "https"]
+    backend = "jenkins"
+    passHostHeader = true
+      [frontends.jenkins.headers]
+      SSLRedirect = true
+    [frontends.jenkins.routes]
+      [frontends.jenkins.routes.route0]
+        rule = "Host:ci.elotech.com.br"
+ [frontends.graylog]
+    entryPoints = ["http", "https"]
+    backend = "graylog"
+    passHostHeader = true
+      [frontends.graylog.headers]
+      SSLRedirect = true
+    [frontends.graylog.routes]
+      [frontends.graylog.routes.route0]
+        rule = "Host:glog.elotech.com.br"
+	  

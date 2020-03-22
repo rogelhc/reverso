@@ -1,0 +1,56 @@
+---
+# tasks file for roles/traefik
+
+- name: Packages
+  package:
+    name:
+      - python3
+      - python3-pip
+      - docker.io      
+    state: present
+  tags:
+    - requirements
+
+- name: Docker Service Enable
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  tags:
+    - docker
+
+- name: Pip Requirements
+  pip:
+    name:
+      - docker
+      - docker-compose
+  tags:
+    - pip
+
+- name: Template Docker-Compose for Traefik
+  template:
+    src: docker-compose.yml
+    dest: /etc/traefik/
+  tags:
+    - docker
+
+- name: Template Traefik Conf File
+  template:
+    src: traefik.toml
+    dest: /etc/traefik/traefik.toml
+  tags:
+    - traefik
+
+- name: Template de configuração Regras Traefik
+  template:
+    src: rules.toml
+    dest: /etc/traefik/data/
+  tags:
+    - traefik
+
+- name: Docker Compose task
+  docker_compose:
+    state: present
+    project_src: /etc/traefik/
+  tags:
+    - docker-compose

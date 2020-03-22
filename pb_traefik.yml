@@ -1,0 +1,6 @@
+---
+  - hosts: traefik
+    become: true
+    roles:
+      - {role: 'traefik', tags: 'traefik-role'}
+  
