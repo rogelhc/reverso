@@ -48,6 +48,14 @@
   tags:
     - traefik
 
+- name: Template custom conf
+  template:
+    src: reverso.j2
+    dest: /etc/traefik/data/reverso.toml
+  tags:
+    - traefik
+    - jinja
+
 - name: Docker Compose task
   docker_compose:
     state: present

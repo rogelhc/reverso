@@ -1,0 +1,5 @@
+---
+traefik_reverseproxy:
+  pfsense:
+    backend_url: https://192.168.1.250:8888
+    rule: Host:epf.elotech.com.br

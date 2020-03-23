@@ -1,0 +1,25 @@
+[backends]
+{% for item in traefik_reverseproxy %}
+{%   set _item = traefik_reverseproxy[item] %}
+
+  [backends.{{ item }}]
+    [backends.{{ item }}.servers.server0]
+      url = "{{ _item.backend_url }}"
+
+{% endfor %}
+
+[frontends]
+{% for item in traefik_reverseproxy %}
+{%   set _item = traefik_reverseproxy[item] %}
+
+ [frontends.{{ item }}]
+    entryPoints = ["http", "https"]
+    backend = "{{ item }}"
+    passHostHeader = true
+      [frontends.{{ item }}.headers]
+      SSLRedirect = true
+    [frontends.{{ item }}.routes]
+      [frontends.{{ item }}.routes.route0]
+        rule = "{{ _item.rule }}"
+
+{% endfor %}
