@@ -10,6 +10,12 @@ $ export ANSIBLE_PRIVATE_KEY_FILE=~/pkeys/elotech-infra
 ```
 
 ## Comando para execução do Playbook:
+
+Verificar alterações e exibir diferenças
+```bash
+$ ansible-playbook -i production pb_traefik.yml --check --diff
+```
+Realizar alterações
 ```bash
 $ ansible-playbook -i production pb_traefik.yml 
 ```
@@ -18,4 +24,4 @@ $ ansible-playbook -i production pb_traefik.yml
 ## TODO
 
  * Zabbix Agent as Code.
- * Template de regras traefik via variáveis.
+ * Migrar regras do arquivo para variáveis
