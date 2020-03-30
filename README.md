@@ -13,10 +13,14 @@ $ export ANSIBLE_PRIVATE_KEY_FILE=~/pkeys/elotech-infra
 
 Verificar alterações e exibir diferenças
 ```bash
+$ make ansible.check
+ou
 $ ansible-playbook -i production pb_traefik.yml --check --diff
 ```
 Realizar alterações
 ```bash
+$ make ansible.run
+ou
 $ ansible-playbook -i production pb_traefik.yml 
 ```
 
