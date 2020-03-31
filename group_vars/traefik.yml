@@ -6,3 +6,6 @@ traefik_reverseproxy:
   graylog:
     backend_url: http://graylog.elotech.localnet
     rule: Host:glog.elotech.com.br
+  eloweb-dev:
+    backend_url: http://elowebdev.elotech.localnet
+    rule: Host:dev.eloweb.elotech.com.br
