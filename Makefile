@@ -14,4 +14,4 @@ ansible.check:	## Ansible Playbook check with diff
 	@ansible-playbook -i production pb_traefik.yml --diff --check
 
 ansible.run: ## Ansible Playbook Run and apply
-	@ansible-playbook -i production pb_traefik
+	@ansible-playbook -i production pb_traefik.yml
